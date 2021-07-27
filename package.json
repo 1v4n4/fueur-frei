@@ -1,0 +1,75 @@
+{
+  "name": "fueur frei",
+  "version": "1.0.0",
+  "description": "Retro shooter game",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "jest-watch": "jest --watch",
+    "jest-init": "jest --init",
+    "install-web": "npm install --save-dev webpack",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "npx-fix": "npx eslint src/  --fix",
+    "start": "webpack serve --open",
+    "heroku-postbuild": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1v4n4/fueur-frei"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "setupFiles": [
+      "jest-canvas-mock"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/test/mocks/styleMock.js",
+      "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/mocks/fileMock.js"
+    }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.8.3",
+    "@babel/preset-env": "^7.14.8",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.1.0",
+    "css-loader": "^5.2.6",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-autofix": "^1.0.5",
+    "eslint-plugin-import": "^2.23.4",
+    "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.0.6",
+    "jest-canvas-mock": "^2.2.0",
+    "style-loader": "^3.0.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.19.0",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "phaser": "^3.55.2",
+    "phaser-webpack-loader": "^2.0.0",
+    "webpack-merge": "^5.8.0",
+    "phaser3-project-template": "^1.0.9"
+  }
+}
