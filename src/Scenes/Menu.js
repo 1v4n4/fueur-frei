@@ -14,14 +14,18 @@ class Menu extends Phaser.Scene {
     this.load.image('startBTN', 'assets/startBTN.png');
     this.load.image('startBTNhover', 'assets/startBTNhover.png');
 
-    this.load.image('restartBTN', 'assets/restartBTN.png');
-    this.load.image('restartBTNnover', 'assets/restartBTNnover.png');
+    this.load.image('playAgainBTN', 'assets/playAgainBTN.png');
+    this.load.image('playAgainBTNhover', 'assets/playAgainBTNhover.png');
 
     this.load.image('scoresBTN', 'assets/scoresBTN.png');
     this.load.image('scoresBTNhover', 'assets/scoresBTNhover.png');
 
-    this.load.image('aboutBTN', 'assets/aboutBTN.png');
-    this.load.image('aboutBTNhover', 'assets/aboutBTNhover.png');
+    this.load.image('creditsBTN', 'assets/creditsBTN.png');
+    this.load.image('creditsBTNhover', 'assets/creditsBTNhover.png');
+
+    this.load.image('optionsBTN', 'assets/optionsBTN.png');
+    this.load.image('optionsBTNhover', 'assets/optionsBTNhover.png');
+
 
     this.load.image('logo', 'assets/logo.png');
     this.load.image('arrowKeys', 'assets/arrows.png');
@@ -29,7 +33,7 @@ class Menu extends Phaser.Scene {
 
     this.load.audio('sndBtnOver', 'assets/sndBtnOver.wav');
     this.load.audio('sndBtnDown', 'assets/sndBtnDown.wav');
-    this.load.audio('soundtrack', 'assets/RammsteinFeuerFrei.mp3');
+    this.load.audio('intro', 'assets/introSong.mp3');
   }
 
   create() {
@@ -44,48 +48,86 @@ class Menu extends Phaser.Scene {
       'logo',
     );
 
-    this.btnPlay = this.add.sprite(
+    this.startBTN = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.65,
+      this.game.config.height * 0.6,
       'startBTN',
     );
 
-    this.btnPlay.setInteractive();
-    this.createButton(this.btnPlay, 'startBTN', 'startBTNhover', 'startBTN');
-    this.btnPlay.on('pointerup', () => {
-      this.btnPlay.setTexture('startBTN');
+    this.startBTN.setInteractive();
+    this.createButton(this.startBTN, 'startBTN', 'startBTNhover', 'startBTN');
+    this.startBTN.on('pointerup', () => {
+      this.startBTN.setTexture('startBTN');
       this.song.stop();
-      this.scene.start('SceneMain');
+      this.scene.start('Main');
     }, this);
 
-    this.btnRecord = this.add.sprite(
+    this.optionsBTN = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.75,
+      this.game.config.height * 0.65,
+      'optionsBTN',
+    );
+
+    this.optionsBTN.setInteractive();
+    this.createButton(this.optionsBTN, 'optionsBTN', 'optionsBTNhover', 'optionsBTN');
+    this.optionsBTN.on('pointerup', () => {
+      this.optionsBTN.setTexture('optionsBTN');
+      this.song.stop();
+      this.scene.start('Options');
+    }, this);
+
+
+    this.scoresBTN = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.70,
       'scoresBTN',
     );
 
-    this.btnRecord.setInteractive();
-    this.createButton(this.btnRecord, 'scoresBTN', 'scoresBTNhover', 'scoresBTN');
-    this.btnRecord.on('pointerup', () => {
-      this.btnRecord.setTexture('scoresBTN');
+    this.scoresBTN.setInteractive();
+    this.createButton(this.scoresBTN, 'scoresBTN', 'scoresBTNhover', 'scoresBTN');
+    this.scoresBTN.on('pointerup', () => {
+      this.scoresBTN.setTexture('scoresBTN');
       this.song.stop();
-      this.scene.start('LeaderBoard');
+      this.scene.start('SceneLeaderBoard');
     }, this);
 
-    this.btnAbout = this.add.sprite(
+    this.creditsBTN = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.55,
-      'aboutBTN',
+      this.game.config.height * 0.75,
+      'creditsBTN',
     );
 
-    this.btnAbout.setInteractive();
-    this.createButton(this.btnAbout, 'aboutBTN', 'aboutBTNhover', 'aboutBTN');
-    this.btnAbout.on('pointerup', () => {
-      this.btnAbout.setTexture('aboutBTN');
+    this.creditsBTN.setInteractive();
+    this.createButton(this.creditsBTN, 'creditsBTN', 'creditsBTNhover', 'creditsBTN');
+    this.creditsBTN.on('pointerup', () => {
+      this.creditsBTN.setTexture('creditsBTN');
       this.song.stop();
-      this.scene.start('About');
+      this.scene.start('Credits');
     }, this);
 
+    // this.scores = getLocalScores();
+
+    // this.scoreTextConfig = {
+    //   color: '#d0c600',
+    //   fontFamily: 'sans-serif',
+    //   fontSize: '2vw',
+    //   lineHeight: 1.3,
+    //   textAlign: 'center',
+    // };
+
+    // this.sceneScore = this.add.text(
+    //   this.game.config.width * 0.05,
+    //   this.game.config.height * 0.85,
+    //   `Last Score: ${this.scores[0]}`,
+    //   this.scoreTextConfig,
+    // );
+
+    // this.sceneScore = this.add.text(
+    //   this.game.config.width * 0.05,
+    //   this.game.config.height * 0.9,
+    //   `High Score: ${this.scores[1]}`,
+    //   this.scoreTextConfig,
+    // );
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
@@ -97,7 +139,22 @@ class Menu extends Phaser.Scene {
       this.backgrounds.push(bg);
     }
 
-    this.song = this.sound.add('soundtrack', { volume: 0.1 });
+    this.song = this.sound.add('intro', { volume: 0.1 });
+
+    //to loop the sound
+    if (typeof this.song.loop == 'boolean')
+    {
+    this.song.loop = true;
+    }
+    else
+{
+  this.song.addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+    }, false);
+}
+
+
     this.song.play();
   }
 
