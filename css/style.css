@@ -1,9 +1,11 @@
+
+
 canvas {
   display: flex;
   margin: auto;
 }
 
-.body {
+body {
   background: black;
   overflow: hidden;
 }
