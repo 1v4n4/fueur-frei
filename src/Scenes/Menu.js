@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
-import { getLocalScores } from '../localStorage';
+import Options from './Options';
+import { getMusic, getSound } from '../localStorage';
 
 class Menu extends Phaser.Scene {
   constructor() {
@@ -28,8 +29,6 @@ class Menu extends Phaser.Scene {
 
 
     this.load.image('logo', 'assets/logo.png');
-    this.load.image('arrowKeys', 'assets/arrows.png');
-    this.load.image('spaceKey', 'assets/space-key.png');
 
     this.load.audio('sndBtnOver', 'assets/sndBtnOver.wav');
     this.load.audio('sndBtnDown', 'assets/sndBtnDown.wav');
@@ -38,9 +37,9 @@ class Menu extends Phaser.Scene {
 
   create() {
     this.sfx = {
-      btnOver: this.sound.add('sndBtnOver', { volume: 0.1 }),
-      btnDown: this.sound.add('sndBtnDown', { volume: 0.1 }),
-    };
+      btnOver: this.sound.add('sndBtnOver', { volume: 0.2 }),
+      btnDown: this.sound.add('sndBtnDown', { volume: 0.2 }),
+      };
 
     this.logo = this.add.image(
       this.game.config.width * 0.5,
@@ -105,30 +104,6 @@ class Menu extends Phaser.Scene {
       this.scene.start('Credits');
     }, this);
 
-    // this.scores = getLocalScores();
-
-    // this.scoreTextConfig = {
-    //   color: '#d0c600',
-    //   fontFamily: 'sans-serif',
-    //   fontSize: '2vw',
-    //   lineHeight: 1.3,
-    //   textAlign: 'center',
-    // };
-
-    // this.sceneScore = this.add.text(
-    //   this.game.config.width * 0.05,
-    //   this.game.config.height * 0.85,
-    //   `Last Score: ${this.scores[0]}`,
-    //   this.scoreTextConfig,
-    // );
-
-    // this.sceneScore = this.add.text(
-    //   this.game.config.width * 0.05,
-    //   this.game.config.height * 0.9,
-    //   `High Score: ${this.scores[1]}`,
-    //   this.scoreTextConfig,
-    // );
-
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.backgrounds = [];
@@ -141,21 +116,24 @@ class Menu extends Phaser.Scene {
 
     this.song = this.sound.add('intro', { volume: 0.1 });
 
-    //to loop the sound
-    if (typeof this.song.loop == 'boolean')
-    {
-    this.song.loop = true;
-    }
-    else
-{
-  this.song.addEventListener('ended', function() {
-        this.currentTime = 0;
-        this.play();
-    }, false);
-}
+    //to loop the music
+        if (typeof this.song.loop == 'boolean')  {
+        this.song.loop = true;
+              }
+        else
+          {
+          this.song.addEventListener('ended', function() {
+          this.currentTime = 0;
+          this.play();
+            },
+          false);
+          }
+
+          const musicOn = getMusic();
+       musicOn ? this.song.play() : this.song.stop();
+          console.log(musicOn)
 
 
-    this.song.play();
   }
 
   update() {
@@ -172,7 +150,9 @@ class Menu extends Phaser.Scene {
   createButton(btn, spr, sprHover, sprDown) {
     btn.on('pointerover', () => {
       btn.setTexture(sprHover);
-      this.sfx.btnOver.play();
+      const soundOn = getSound()
+      if (soundOn) {
+      this.sfx.btnOver.play();}
     }, this);
 
     btn.on('pointerout', () => {
@@ -181,7 +161,9 @@ class Menu extends Phaser.Scene {
 
     btn.on('pointerdown', () => {
       btn.setTexture(sprDown);
-      this.sfx.btnDown.play();
+      const soundOn = getSound()
+      if (soundOn) {
+      this.sfx.btnDown.play();}
     }, this);
   }
 }

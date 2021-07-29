@@ -8,7 +8,7 @@ class Credits extends Phaser.Scene {
   }
 
   preload() {
-    this.load.audio('gameSong', 'assets/gameSong.mp3');
+    this.load.audio('creditsMusic', 'assets/credits.mp3');
     this.load.image('logo', 'assets/logo.png');
 
     this.load.image('york', 'assets/york.png');
@@ -33,7 +33,7 @@ class Credits extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown', { volume: 0.1 }),
     };
 
-    this.song = this.sound.add('gameSong', { volume: 0.3 });
+    this.song = this.sound.add('creditsMusic', { volume: 0.3 });
     this.song.play();
 
     this.menuBTN = this.add.sprite(

@@ -1,12 +1,12 @@
 import Phaser from 'phaser';
 import Entity from './Entity';
 import PlayerLaser from './PlayerLaser';
-//import { storeScores } from '../localStorage';
+import { storeScores } from '../localStorage';
 
 class Player extends Entity {
   constructor(scene, x, y, key) {
     super(scene, x, y, key, 'Player');
-    this.setData('speed', 200);
+    this.setData('speed', 500);
     this.play('sprPlayer');
     this.setData('isShooting', false);
     this.setData('timerShootDelay', 10);
@@ -35,7 +35,7 @@ class Player extends Entity {
     this.scene.time.addEvent({
       delay: 1000,
       callback() {
-        this.scene.scene.start('SceneGameOver');
+        this.scene.scene.start('GameOver');
       },
       callbackScope: this,
       loop: false,
@@ -45,9 +45,9 @@ class Player extends Entity {
   updateHealth() {
     if (this.getData('health') > 0) {
       if (this.getData('health') === 1) {
-        this.scene.sfx.useForce.play();
+        this.scene.sfx.spaceSound.play();
       } else {
-        this.scene.sfx.r2d2Scream.play();
+        this.scene.sfx.spaceShipSound.play();
       }
       this.setData('health', this.getData('health') - 1);
       this.scene.cameras.main.shake(250, 0.02);
