@@ -27,7 +27,6 @@ class Menu extends Phaser.Scene {
     this.load.image('optionsBTN', 'assets/optionsBTN.png');
     this.load.image('optionsBTNhover', 'assets/optionsBTNhover.png');
 
-
     this.load.image('logo', 'assets/logo.png');
 
     this.load.audio('sndBtnOver', 'assets/sndBtnOver.wav');
@@ -39,7 +38,7 @@ class Menu extends Phaser.Scene {
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver', { volume: 0.2 }),
       btnDown: this.sound.add('sndBtnDown', { volume: 0.2 }),
-      };
+    };
 
     this.logo = this.add.image(
       this.game.config.width * 0.5,
@@ -74,7 +73,6 @@ class Menu extends Phaser.Scene {
       this.song.stop();
       this.scene.start('Options');
     }, this);
-
 
     this.scoresBTN = this.add.sprite(
       this.game.config.width * 0.5,
@@ -116,24 +114,20 @@ class Menu extends Phaser.Scene {
 
     this.song = this.sound.add('intro', { volume: 0.1 });
 
-    //to loop the music
-        if (typeof this.song.loop == 'boolean')  {
-        this.song.loop = true;
-              }
-        else
-          {
-          this.song.addEventListener('ended', function() {
-          this.currentTime = 0;
-          this.play();
-            },
-          false);
-          }
+    // to loop the music
+    if (typeof this.song.loop === 'boolean') {
+      this.song.loop = true;
+    } else {
+      this.song.addEventListener('ended', function () {
+        this.currentTime = 0;
+        this.play();
+      },
+      false);
+    }
 
-          const musicOn = getMusic();
-       musicOn ? this.song.play() : this.song.stop();
-          console.log(musicOn)
-
-
+    const musicOn = getMusic();
+    musicOn ? this.song.play() : this.song.stop();
+    console.log(musicOn);
   }
 
   update() {
@@ -150,9 +144,10 @@ class Menu extends Phaser.Scene {
   createButton(btn, spr, sprHover, sprDown) {
     btn.on('pointerover', () => {
       btn.setTexture(sprHover);
-      const soundOn = getSound()
+      const soundOn = getSound();
       if (soundOn) {
-      this.sfx.btnOver.play();}
+        this.sfx.btnOver.play();
+      }
     }, this);
 
     btn.on('pointerout', () => {
@@ -161,9 +156,10 @@ class Menu extends Phaser.Scene {
 
     btn.on('pointerdown', () => {
       btn.setTexture(sprDown);
-      const soundOn = getSound()
+      const soundOn = getSound();
       if (soundOn) {
-      this.sfx.btnDown.play();}
+        this.sfx.btnDown.play();
+      }
     }, this);
   }
 }

@@ -18,7 +18,6 @@ class Credits extends Phaser.Scene {
 
     this.load.image('menuBTN', 'assets/menuBTN.png');
     this.load.image('menuBTNhover', 'assets/menuBTNhover.png');
-
   }
 
   create() {
@@ -54,7 +53,6 @@ class Credits extends Phaser.Scene {
     this.message.push('This game is made using the Phaser framework, with the help of Jared York\'s tutorial.');
     this.message.push('Soundtrack is the song \'Fueuer frei!\' by Rammstein, and the intro image is a picture from the band\'s concert. Sounds are from Freesound website');
 
-
     this.textConfig = {
       color: ' #E09311',
       fontSize: '17px',
@@ -73,7 +71,6 @@ class Credits extends Phaser.Scene {
       this.message[0],
       this.textConfig,
     );
-
 
     this.link = this.createIcon(
       this.phaserIcon,
@@ -100,7 +97,6 @@ class Credits extends Phaser.Scene {
       this.textConfig,
     );
 
-
     this.githubIcon = this.createIcon(
       this.githubIcon,
       this.game.config.width * 0.4,
@@ -122,7 +118,7 @@ class Credits extends Phaser.Scene {
     this.creditTxt = this.add.text(
       this.game.config.width * 0.35,
       this.game.config.height * 0.97,
-      `Made by 1v4n4 © 2021`, {
+      'Made by 1v4n4 © 2021', {
         color: '#E09311',
         fontSize: '15px',
 

@@ -4,7 +4,7 @@ import Main from './Scenes/Main';
 import Intro from './Scenes/Intro';
 import Credits from './Scenes/Credits';
 import GameOver from './Scenes/GameOver';
-import Options from './Scenes/Options'
+import Options from './Scenes/Options';
 // import SceneLeaderBoard from './scenes/SceneLeaderBoard';
 
 const config = {
@@ -28,7 +28,7 @@ const config = {
     Options,
     Credits,
     Main,
-    GameOver
+    GameOver,
     // SceneLeaderBoard,
   ],
   pixelArt: true,

@@ -105,19 +105,15 @@ class Main extends Phaser.Scene {
       spaceShoot: this.sound.add('spaceShoot', { volume: 0.1 }),
     };
 
-
     this.song = this.sound.add('gameSong', { volume: 0.1 });
-    if (typeof this.song.loop == 'boolean')
-    {
-    this.song.loop = true;
-    }
-    else
-{
-  this.song.addEventListener('ended', function() {
+    if (typeof this.song.loop === 'boolean') {
+      this.song.loop = true;
+    } else {
+      this.song.addEventListener('ended', function () {
         this.currentTime = 0;
         this.play();
-    }, false);
-}
+      }, false);
+    }
     this.song.play();
 
     this.backgrounds = [];

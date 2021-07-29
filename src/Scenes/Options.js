@@ -1,40 +1,41 @@
-import 'phaser';
+import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
-import { setMusic, getMusic, getSound, setSound } from '../localStorage';
+import {
+  setMusic, getMusic, getSound, setSound,
+} from '../localStorage';
+
 export default class Options extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Options');
-    }
+  }
 
-    preload() {
-      this.load.image('sprBg0', 'assets/sprBg0.png');
-      this.load.image('sprBg1', 'assets/sprBg1.png');
+  preload() {
+    this.load.image('sprBg0', 'assets/sprBg0.png');
+    this.load.image('sprBg1', 'assets/sprBg1.png');
 
-      this.load.image('startBTN', 'assets/startBTN.png');
-      this.load.image('startBTNhover', 'assets/startBTNhover.png');
+    this.load.image('startBTN', 'assets/startBTN.png');
+    this.load.image('startBTNhover', 'assets/startBTNhover.png');
 
-      this.load.image('menuBTN', 'assets/menuBTN.png');
-      this.load.image('menuBTNhover', 'assets/menuBTNhover.png');
+    this.load.image('menuBTN', 'assets/menuBTN.png');
+    this.load.image('menuBTNhover', 'assets/menuBTNhover.png');
 
-      this.load.image('sound', 'assets/sound.png');
-      this.load.image('soundOff', 'assets/soundOff.png');
+    this.load.image('sound', 'assets/sound.png');
+    this.load.image('soundOff', 'assets/soundOff.png');
 
-      this.load.image('music', 'assets/music.png');
-      this.load.image('musicOff', 'assets/musicOff.png');
+    this.load.image('music', 'assets/music.png');
+    this.load.image('musicOff', 'assets/musicOff.png');
 
-      this.load.image('sprBg0', 'assets/sprBg0.png');
-      this.load.image('sprBg1', 'assets/sprBg1.png');
+    this.load.image('sprBg0', 'assets/sprBg0.png');
+    this.load.image('sprBg1', 'assets/sprBg1.png');
 
-      this.load.image('logo', 'assets/logo.png');
+    this.load.image('logo', 'assets/logo.png');
 
-      this.load.audio('sndBtnOver', 'assets/sndBtnOver.wav');
-      this.load.audio('sndBtnDown', 'assets/sndBtnDown.wav');
-      this.load.audio('intro', 'assets/introSong.mp3');
+    this.load.audio('sndBtnOver', 'assets/sndBtnOver.wav');
+    this.load.audio('sndBtnDown', 'assets/sndBtnDown.wav');
+    this.load.audio('intro', 'assets/introSong.mp3');
+  }
 
-
-    }
-
-  create () {
+  create() {
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver', { volume: 0.2 }),
       btnDown: this.sound.add('sndBtnDown', { volume: 0.2 }),
@@ -43,7 +44,7 @@ export default class Options extends Phaser.Scene {
     this.optionsTxt = this.add.text(
       this.game.config.width * 0.18,
       this.game.config.height * 0.12,
-      `OPTIONS`, {
+      'OPTIONS', {
         color: '#E09311',
         fontSize: '12vh',
 
@@ -69,12 +70,11 @@ export default class Options extends Phaser.Scene {
 
     this.musicText = this.add.text(270, 270, 'Music', { fontSize: 24, color: '#E09311', fontWeight: 'bold' });
 
-    //this.soundButton = this.add.image(200, 350, 'sound');
+    // this.soundButton = this.add.image(200, 350, 'sound');
     this.soundText = this.add.text(270, 360, 'Sound', { fontSize: 24, color: '#E09311', fontWeight: 'bold' });
 
     this.musicButton.setInteractive();
     this.soundButton.setInteractive();
-
 
     // .setInteractive();
     // this.soundOn.on('pointerdown', () => {
@@ -143,7 +143,6 @@ export default class Options extends Phaser.Scene {
       this.scene.start('Credits');
     }, this);
 
-
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.backgrounds = [];
@@ -156,57 +155,53 @@ export default class Options extends Phaser.Scene {
 
     this.song = this.sound.add('intro', { volume: 0.1 });
 
-    //to loop the music
-        if (typeof this.song.loop == 'boolean')  {
-        this.song.loop = true;
-              }
-        else
-          {
-          this.song.addEventListener('ended', function() {
-          this.currentTime = 0;
-          this.play();
-            },
-          false);
-          }
+    // to loop the music
+    if (typeof this.song.loop === 'boolean') {
+      this.song.loop = true;
+    } else {
+      this.song.addEventListener('ended', function () {
+        this.currentTime = 0;
+        this.play();
+      },
+      false);
+    }
 
+    const playMusic = () => {
+      const musicOn = getMusic();
+      if (musicOn) {
+        this.song.play();
+        console.log('in playMusic', musicOn);
+      } else {
+        this.song.stop();
+        console.log('in playMusic', musicOn);
+      }
+    };
 
-      const playMusic = () => {
-        const musicOn = getMusic();
-        if (musicOn) {
-         this.song.play();
-         console.log('in playMusic', musicOn); }
-         else {
-          this.song.stop();
-          console.log('in playMusic', musicOn); }
-        };
+    playMusic();
+
+    this.musicButton.on('pointerdown', () => {
+      const musicOn = getMusic();
+      if (musicOn) {
+        setMusic(false);
+        console.log(musicOn);
+      } else {
+        setMusic(true);
+        console.log(musicOn);
+      }
 
       playMusic();
+    });
 
-      this.musicButton.on('pointerdown', function () {
-        const musicOn = getMusic();
-        if (musicOn) {
-          setMusic(false);
-          console.log(musicOn);
-        } else {
-          setMusic(true);
-          console.log(musicOn);
-
-        }
-
-        playMusic();
-      });
-
-      this.soundButton.on('pointerdown', function () {
-        let soundOn = getSound();
-        if (soundOn) {
-          setSound(false);
-          alert('Sounds off')
-        } else {
-          setSound(true);
-          alert('Sounds on')
-        }
-      });
-
+    this.soundButton.on('pointerdown', () => {
+      const soundOn = getSound();
+      if (soundOn) {
+        setSound(false);
+        alert('Sounds off');
+      } else {
+        setSound(true);
+        alert('Sounds on');
+      }
+    });
   }
 
   update() {
@@ -219,9 +214,10 @@ export default class Options extends Phaser.Scene {
   createButton(btn, spr, sprHover, sprDown) {
     btn.on('pointerover', () => {
       btn.setTexture(sprHover);
-      const soundOn = getSound()
+      const soundOn = getSound();
       if (soundOn) {
-      this.sfx.btnOver.play(); }
+        this.sfx.btnOver.play();
+      }
     }, this);
 
     btn.on('pointerout', () => {
@@ -230,9 +226,10 @@ export default class Options extends Phaser.Scene {
 
     btn.on('pointerdown', () => {
       btn.setTexture(sprDown);
-      const soundOn = getSound()
+      const soundOn = getSound();
       if (soundOn) {
-      this.sfx.btnDown.play();}
+        this.sfx.btnDown.play();
+      }
     }, this);
   }
 
@@ -251,6 +248,4 @@ export default class Options extends Phaser.Scene {
 
     return icon;
   }
-
-
-};
+}
