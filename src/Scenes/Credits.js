@@ -32,7 +32,17 @@ class Credits extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown', { volume: 0.1 }),
     };
 
-    this.song = this.sound.add('creditsMusic', { volume: 0.3 });
+    this.song = this.sound.add('creditsMusic', { volume: 0.2 });
+    // to loop the music
+    if (typeof this.song.loop === 'boolean') {
+      this.song.loop = true;
+    } else {
+      this.song.addEventListener('ended', function () {
+        this.currentTime = 0;
+        this.play();
+      },
+      false);
+    }
     this.song.play();
 
     this.menuBTN = this.add.sprite(
