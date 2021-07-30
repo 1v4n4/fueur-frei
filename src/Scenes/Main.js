@@ -28,15 +28,15 @@ class Main extends Phaser.Scene {
       frameHeight: 27,
     });
 
-    this.load.image('bomb', 'content/sprEnemy1.png');
+    // this.load.image('bomb', 'assets/sprEnemy1.png');
 
     this.load.spritesheet('Ship3', 'assets/ship3.png', {
       frameWidth: 43,
       frameHeight: 29,
     });
 
-    this.load.image('sprLaserEnemy0', 'content/sprLaserEnemy0.png');
-    this.load.image('sprLaserPlayer', 'content/sprLaserPlayer.png');
+    this.load.image('sprLaserEnemy0', 'assets/sprLaserEnemy0.png');
+    this.load.image('sprLaserPlayer', 'assets/sprLaserPlayer.png');
     this.load.spritesheet('sprPlayer', 'assets/myShip.png', {
       frameWidth: 55,
       frameHeight: 44,

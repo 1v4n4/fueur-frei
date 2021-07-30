@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
-import { getLocal } from '../localStorage';
+import { getLocalScores } from '../localStorage';
 //import { submitHighScore } from '../leaderboardCall';
 
 class GameOver extends Phaser.Scene {
@@ -37,7 +37,7 @@ class GameOver extends Phaser.Scene {
       },
     );
 
-    this.scores = getLocal();
+    this.scores = getLocalScores();
     this.gameOverSceneScore = this.add.text(
       this.game.config.width * 0.30,
       this.game.config.height * 0.25,
