@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import Entity from './Entity';
 import PlayerLaser from './PlayerLaser';
-import { storeScores } from '../localStorage';
+import { setLocalScores } from '../localStorage';
 
 class Player extends Entity {
   constructor(scene, x, y, key) {
@@ -60,7 +60,7 @@ class Player extends Entity {
   setScore(value) {
     if (!this.getData('isDead')) {
       this.setData('score', this.getData('score') + value);
-      storeScores(this.getData('score'));
+      setLocalScores(this.getData('score'));
     }
   }
 

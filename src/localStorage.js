@@ -1,23 +1,18 @@
-function localStoreScore(score) {
-  const scr = JSON.stringify(score);
-  localStorage.setItem('scores', scr);
-}
-
 function getLocalScores() {
   const score = localStorage.getItem('scores');
   let result = JSON.parse(score);
   if (result === null) {
     result = [0, 0];
-    localStoreScore(result);
+    localStorage.setItem('scores', JSON.stringify(result));
   }
   return result;
 }
 
-function storeScores(score) {
+function setLocalScores(score) {
   const localScore = getLocalScores();
   localScore[0] = score;
   localScore[1] = Math.max(...localScore);
-  localStoreScore(localScore);
+  localStorage.setItem('scores', JSON.stringify(localScore));
 }
 
 const setMusic = (value) => {
@@ -30,7 +25,6 @@ const getMusic = () => {
   let result = JSON.parse(music);
   if (result === null) {
     result = true;
-    localStoreScore(result[0]);
   }
   return result;
 };
@@ -46,11 +40,10 @@ const getSound = () => {
   let result = JSON.parse(sound);
   if (result === null) {
     result = true;
-    localStoreScore(result[0]);
   }
   return result;
 };
 
 export {
-  localStoreScore, getLocalScores, storeScores, getMusic, setMusic, setSound, getSound,
+ getLocalScores, setLocalScores, getMusic, setMusic, setSound, getSound,
 };

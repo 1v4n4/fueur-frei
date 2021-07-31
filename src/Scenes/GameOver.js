@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
 import { getLocalScores } from '../localStorage';
-//import { submitHighScore } from '../leaderboardCall';
+import { submitScore } from '../api';
 
 class GameOver extends Phaser.Scene {
   constructor() {
@@ -32,7 +32,6 @@ class GameOver extends Phaser.Scene {
       `GAME OVER`, {
         color: '#E09311',
         fontSize: '12vh',
-
         fontWeight: 'bold',
       },
     );
@@ -122,27 +121,38 @@ else
 
     const div = document.createElement('div');
     div.innerHTML = `
-    <input type="text" id="nameField" placeholder="     Enter your name" style="width: 166px; border: 2px solid black; border-radius: 5px; background: #E09311; margin-top: 420px; margin-right: 20px; height: 28px;">
-    <button type="button" name="submitBTN" value="SUBMIT" style="width: 166px; font-size: 18px; color: #212529; margin-top: 4px; background: #E09311; border: 1px solid black; border-radius: 5px; height: 32px;" onMouseOver="this.style.background='#860105'" onMouseOut="this.style.background='#E09311'">SUBMIT</button>`;
+    <input type="text" id="nameInput" placeholder="     Enter your name" style="width: 166px; border: 2px solid black; border-radius: 5px; background: #E09311; margin-top: 420px; margin-right: 20px; height: 28px;">
+    <button type="submit" name="submitBTN" id="submitBTN" value="SUBMIT" style="width: 166px; font-size: 18px; color: #212529; margin-top: 4px; background: #E09311; border: 1px solid black; border-radius: 5px; height: 32px;" onMouseOver="this.style.background='#860105'" onMouseOut="this.style.background='#E09311'">SUBMIT</button>`;
 
-    const element = this.add.dom(280, 480, div);
-    element.addListener('click');
+    this.add.dom(280, 480, div);
 
-    element.on('click', (event) => {
-      if (event.target.name === 'submitBTN') {
-        const inputText = document.getElementById('nameField');
+
+    const el = document.getElementById("submitBTN")
+    console.log(el)
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('in addlistener')
+      if (e.target.name === 'submitBTN') {
+        const inputText = document.getElementById('nameInput');
         if (inputText.value !== '') {
-          element.removeListener('click');
-          element.setVisible(false);
+          console.log('in div')
           this.userName = inputText.value;
-          this.submit = submitHighScore(this.userName, this.scores[0]);
+          this.submit = submitScore(this.userName, this.scores[0]);
           this.submit.then(() => {
             this.scene.scene.song.stop();
-            this.scene.start('SceneLeaderBoard');
+            this.scene.start('HighScores');
           });
         }
       }
     });
+
+    this.backgrounds = [];
+    for (let i = 0; i < 5; i += 1) {
+      const keys = ['sprBg0', 'sprBg1'];
+      const key = keys[Phaser.Math.Between(0, keys.length - 1)];
+      const bg = new ScrollBg(this, key, i * 10);
+      this.backgrounds.push(bg);
+    }
   }
 
   update() {

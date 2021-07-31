@@ -21,8 +21,8 @@ class Ship3 extends Entity {
       loop: true,
     });
     this.play('Ship3');
-    this.setData('health', 2);
-    this.setData('score', 300);
+    this.setData('health', 1);
+    this.setData('score', 20);
   }
 
   onDestroy() {

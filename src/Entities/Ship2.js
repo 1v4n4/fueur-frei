@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import Entity from './Entity';
-import EnemyLaser from './EnemyLaser';
+import EnemyLaser from './EnemyLaser'; //rarest
 
 class Ship2 extends Entity {
   constructor(scene, x, y) {
@@ -32,8 +32,8 @@ class Ship2 extends Entity {
       DISTANCE: 'DISTANCE',
     };
     this.play('Ship2');
-    this.setData('health', 20);
-    this.setData('score', 5000);
+    this.setData('health', 5);
+    this.setData('score', 100);
   }
 
   onDestroy() {

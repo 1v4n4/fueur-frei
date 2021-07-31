@@ -6,8 +6,8 @@ class Ship1 extends Entity {
     super(scene, x, y, 'Ship1', 'Ship1');
     this.body.velocity.y = Phaser.Math.Between(50, 100);
     this.play('Ship1');
-    this.setData('health', 3);
-    this.setData('score', 500);
+    this.setData('health', 2);
+    this.setData('score', 50);
   }
 
   updateHealth() {

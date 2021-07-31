@@ -1,8 +1,7 @@
 import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
-import Options from './Options';
 import { getMusic, getSound } from '../localStorage';
-
+import { getScores } from '../api'
 class Menu extends Phaser.Scene {
   constructor() {
     super({ key: 'Menu' });
@@ -85,7 +84,7 @@ class Menu extends Phaser.Scene {
     this.scoresBTN.on('pointerup', () => {
       this.scoresBTN.setTexture('scoresBTN');
       this.song.stop();
-      this.scene.start('SceneLeaderBoard');
+      this.scene.start('HighScores');
     }, this);
 
     this.creditsBTN = this.add.sprite(
@@ -103,6 +102,9 @@ class Menu extends Phaser.Scene {
     }, this);
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+    const x = getScores()
+  console.log(x);
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
