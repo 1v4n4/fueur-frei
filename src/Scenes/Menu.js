@@ -1,7 +1,8 @@
 import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
 import { getMusic, getSound } from '../localStorage';
-import { getApiScores } from '../api'
+import { getApiScores } from '../api';
+
 class Menu extends Phaser.Scene {
   constructor() {
     super({ key: 'Menu' });
@@ -103,8 +104,8 @@ class Menu extends Phaser.Scene {
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-    const x = getApiScores()
-  console.log(x);
+    const x = getApiScores();
+    console.log(x);
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
@@ -128,6 +129,7 @@ class Menu extends Phaser.Scene {
     }
 
     const musicOn = getMusic();
+    // eslint-disable-next-line
     musicOn ? this.song.play() : this.song.stop();
     console.log(musicOn);
   }

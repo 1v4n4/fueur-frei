@@ -25,11 +25,10 @@ class GameOver extends Phaser.Scene {
   }
 
   create() {
-
     this.gameOverTxt = this.add.text(
       this.game.config.width * 0.04,
       this.game.config.height * 0.12,
-      `GAME OVER`, {
+      'GAME OVER', {
         color: '#E09311',
         fontSize: '12vh',
         fontWeight: 'bold',
@@ -47,12 +46,10 @@ class GameOver extends Phaser.Scene {
     );
 
     this.gameOverImage = this.add.image(
-    this.game.config.width * 0.5,
-    this.game.config.height * 0.45,
-    'gameOverImg',
-     );
-
-
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.45,
+      'gameOverImg',
+    );
 
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver', { volume: 0.1 }),
@@ -60,17 +57,14 @@ class GameOver extends Phaser.Scene {
     };
 
     this.song = this.sound.add('intro', { volume: 0.1 });
-    if (typeof this.song.loop == 'boolean')
-{
-  this.song.loop = true;
-}
-else
-{
-  this.song.addEventListener('ended', function() {
+    if (typeof this.song.loop === 'boolean') {
+      this.song.loop = true;
+    } else {
+      this.song.addEventListener('ended', function () {
         this.currentTime = 0;
         this.play();
-    }, false);
-}
+      }, false);
+    }
     this.song.play();
 
     this.btnPlayAgain = this.add.sprite(
@@ -126,16 +120,15 @@ else
 
     this.add.dom(280, 480, div);
 
-
-    const el = document.getElementById("submitBTN")
-    console.log(el)
+    const el = document.getElementById('submitBTN');
+    console.log(el);
     el.addEventListener('click', (e) => {
       e.preventDefault();
-      console.log('in addlistener')
+      console.log('in addlistener');
       if (e.target.name === 'submitBTN') {
         const inputText = document.getElementById('nameInput');
         if (inputText.value !== '') {
-          console.log('in div')
+          console.log('in div');
           this.userName = inputText.value;
           this.submit = setApiScore(this.userName, this.scores[0]);
           this.submit.then(() => {

@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import Entity from './Entity';
-import EnemyLaser from './EnemyLaser'; //rarest
+import EnemyLaser from './EnemyLaser'; // rarest
 
 class Ship2 extends Entity {
   constructor(scene, x, y) {

@@ -45,5 +45,5 @@ const getSound = () => {
 };
 
 export {
- getLocalScores, setLocalScores, getMusic, setMusic, setSound, getSound,
+  getLocalScores, setLocalScores, getMusic, setMusic, setSound, getSound,
 };

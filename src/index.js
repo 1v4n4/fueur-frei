@@ -6,8 +6,6 @@ import Credits from './Scenes/Credits';
 import GameOver from './Scenes/GameOver';
 import Options from './Scenes/Options';
 import HighScores from './Scenes/HighScores';
-import { createGame } from './api';
-// import SceneLeaderBoard from './scenes/SceneLeaderBoard';
 
 const config = {
   type: Phaser.WEBGL,
@@ -36,6 +34,5 @@ const config = {
   pixelArt: true,
   roundPixels: true,
 };
-
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line
 const game = new Phaser.Game(config);

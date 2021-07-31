@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
 import { getApiScores } from '../api';
-//import { displayScores } from '../helper';
+// import { displayScores } from '../helper';
 
 class HighScores extends Phaser.Scene {
   constructor() {
@@ -13,14 +13,13 @@ class HighScores extends Phaser.Scene {
 
     this.load.image('menuBTN', 'assets/menuBTN.png');
     this.load.image('menuBTNhover', 'assets/menuBTNhover.png');
-
   }
 
   create() {
     this.highScoresTxt = this.add.text(
       this.game.config.width * 0.001,
       this.game.config.height * 0.12,
-      `HALL OF FAME`, {
+      'HALL OF FAME', {
         color: '#E09311',
         fontSize: '10vh',
         fontWeight: 'bold',
@@ -49,7 +48,6 @@ class HighScores extends Phaser.Scene {
       this.scene.start('Main');
     }, this);
 
-
     this.menuBTN = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.85,
@@ -63,7 +61,6 @@ class HighScores extends Phaser.Scene {
       this.song.stop();
       this.scene.start('Menu');
     }, this);
-
 
     this.creditsBTN = this.add.sprite(
       this.game.config.width * 0.5,
@@ -90,20 +87,20 @@ class HighScores extends Phaser.Scene {
     }
 
     const scoresContainer = document.createElement('article');
-    scoresContainer.innerHTML = `<p style="text-align: center;"> Loading...</p>`
+    scoresContainer.innerHTML = '<p style="text-align: center;"> Loading...</p>';
     this.add.dom(280, 225, scoresContainer);
 
     async function displayScores() {
-    const best = await getApiScores();
+      const best = await getApiScores();
 
-    console.log(best)
-    scoresContainer.innerHTML=''
-    best.forEach((score, index) => {
-      scoresContainer.innerHTML+=`<p class="p">${index + 1}. PLAYER: ${score.user}, SCORE: ${score.score}</p>` })
+      console.log(best);
+      scoresContainer.innerHTML = '';
+      best.forEach((score, index) => {
+        scoresContainer.innerHTML += `<p class="p">${index + 1}. PLAYER: ${score.user}, SCORE: ${score.score}</p>`;
+      });
     }
 
-
-    displayScores()
+    displayScores();
   }
 
   update() {
