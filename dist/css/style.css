@@ -3,11 +3,15 @@
 canvas {
   display: flex;
   margin: auto;
+  color: #E09311;
+  font-size: 18px;
 }
 
 body {
   background: black;
   overflow: hidden;
+  color: #E09311;
+  font-size: 18px;
 }
 
 div {
@@ -17,6 +21,12 @@ div {
   margin-left: auto;
 }
 
+article {
+  width: 590px;
+}
+.p {
+  text-align: center;
+}
 #submitBTN:hover {
   background: #860105;
 }

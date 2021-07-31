@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
 import { getMusic, getSound } from '../localStorage';
-import { getScores } from '../api'
+import { getApiScores } from '../api'
 class Menu extends Phaser.Scene {
   constructor() {
     super({ key: 'Menu' });
@@ -103,7 +103,7 @@ class Menu extends Phaser.Scene {
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-    const x = getScores()
+    const x = getApiScores()
   console.log(x);
 
     this.backgrounds = [];

@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
-//import { getScoreBoard } from '../leaderboardCall';
+import { getApiScores } from '../api';
+//import { displayScores } from '../helper';
 
 class HighScores extends Phaser.Scene {
   constructor() {
@@ -17,11 +18,11 @@ class HighScores extends Phaser.Scene {
 
   create() {
     this.highScoresTxt = this.add.text(
-      this.game.config.width * 0.1,
+      this.game.config.width * 0.001,
       this.game.config.height * 0.12,
       `HALL OF FAME`, {
         color: '#E09311',
-        fontSize: '12vh',
+        fontSize: '10vh',
         fontWeight: 'bold',
       },
     );
@@ -36,7 +37,7 @@ class HighScores extends Phaser.Scene {
 
     this.btnPlayAgain = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.75,
+      this.game.config.height * 0.80,
       'playAgainBTN',
     );
 
@@ -51,7 +52,7 @@ class HighScores extends Phaser.Scene {
 
     this.menuBTN = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.80,
+      this.game.config.height * 0.85,
       'menuBTN',
     );
 
@@ -66,7 +67,7 @@ class HighScores extends Phaser.Scene {
 
     this.creditsBTN = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.85,
+      this.game.config.height * 0.90,
       'creditsBTN',
     );
 
@@ -88,78 +89,21 @@ class HighScores extends Phaser.Scene {
       this.backgrounds.push(bg);
     }
 
-    // this.getScores = getScoreBoard();
+    const scoresContainer = document.createElement('article');
+    scoresContainer.innerHTML = `<p style="text-align: center;"> Loading...</p>`
+    this.add.dom(280, 225, scoresContainer);
 
-    // this.getScores.then(scores => {
-    //   this.config = {
-    //     color: '#d0c600',
-    //     fontFamily: 'sans-serif',
-    //     fontSize: '3vw',
-    //     lineHeight: 1.3,
-    //     align: 'center',
-    //   };
+    async function displayScores() {
+    const best = await getApiScores();
 
-    //   const scrollMode = 0;
-    //   this.rexUI.add.gridTable({
-    //     x: this.game.config.width * 0.46,
-    //     y: 320,
-    //     width: 400,
-    //     height: 420,
-    //     scrollMode,
-    //     table: {
-    //       cellWidth: (scrollMode === 0) ? undefined : 60,
-    //       cellHeight: (scrollMode === 0) ? 60 : undefined,
-    //       columns: 3,
-    //       mask: {
-    //         padding: 2,
-    //       },
-    //       reuseCellContainer: true,
-    //     },
-    //     slider: {
-    //       track: this.rexUI.add.roundRectangle(0, 0, 20, 10, 10, 0xfcf8a2),
-    //       thumb: this.rexUI.add.roundRectangle(0, 0, 0, 0, 13, 0x847d00),
-    //     },
-    //     createCellContainerCallback(cell, cellContainer) {
-    //       const { scene } = cell;
-    //       const { width } = cell;
-    //       const { height } = cell;
-    //       const { item } = cell;
-    //       if (cellContainer === null) {
-    //         cellContainer = scene.rexUI.add.label({
-    //           width,
-    //           height,
-    //           align: 'center',
-    //           orientation: scrollMode,
-    //           text: scene.add.text(0, 0, '', {
-    //             color: '#d0c600',
-    //             fontFamily: 'sans-serif',
-    //             fontSize: '2vw',
-    //             lineHeight: 1.3,
-    //           }),
-    //         });
-    //       }
+    console.log(best)
+    scoresContainer.innerHTML=''
+    best.forEach((score, index) => {
+      scoresContainer.innerHTML+=`<p class="p">${index + 1}. PLAYER: ${score.user}, SCORE: ${score.score}</p>` })
+    }
 
-    //       cellContainer.setMinSize(width, height);
-    //       cellContainer.getElement('text').setText(item);
-    //       return cellContainer;
-    //     },
-    //     items: this.getItems(20, scores),
-    //   })
-    //     .layout();
-    // });
 
-    // this.getItems = (count, score) => {
-    //   const data = ['Rank', 'User', 'Score'];
-
-    //   for (let i = 0; i < count; i += 1) {
-    //     if (score[i]) {
-    //       data.push(i + 1);
-    //       data.push(score[i][1]);
-    //       data.push(score[i][0]);
-    //     }
-    //   }
-    //   return data;
-    // };
+    displayScores()
   }
 
   update() {

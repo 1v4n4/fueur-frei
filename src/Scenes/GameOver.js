@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
 import { getLocalScores } from '../localStorage';
-import { submitScore } from '../api';
+import { setApiScore } from '../api';
 
 class GameOver extends Phaser.Scene {
   constructor() {
@@ -137,9 +137,9 @@ else
         if (inputText.value !== '') {
           console.log('in div')
           this.userName = inputText.value;
-          this.submit = submitScore(this.userName, this.scores[0]);
+          this.submit = setApiScore(this.userName, this.scores[0]);
           this.submit.then(() => {
-            this.scene.scene.song.stop();
+            this.song.stop();
             this.scene.start('HighScores');
           });
         }
