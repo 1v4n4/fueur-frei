@@ -248,12 +248,12 @@ class Main extends Phaser.Scene {
           this.player.x,
           0,
         );
-        const soundOn = getSound();
         if (enemy !== null) {
           enemy.setScale(2);
           const soundOn = getSound();
           if (soundOn) {
-          this.sfx.spaceShoot.play();}
+            this.sfx.spaceShoot.play();
+          }
           this.enemies.add(enemy);
         }
       },

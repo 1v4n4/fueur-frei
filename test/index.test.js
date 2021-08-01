@@ -1,9 +1,8 @@
-
 /**
  * @jest-environment jsdom
  */
 
-import fakeRun from './game_mock'
+import fakeRun from './game_mock';
 
 describe('Testing mocked game', () => {
   const game = fakeRun();

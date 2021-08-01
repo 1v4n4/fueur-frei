@@ -43,7 +43,6 @@ const setApiScore = async (userName, userScore) => {
     console.log(answer);
     return answer;
   } catch (error) {
-
     console.error(error);
     alert('Ouch, something went wrong!');
   }
@@ -78,20 +77,18 @@ const getApiScores = async () => {
 };
 
 const getApiScoress = async () => {
-   const endPoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/txsLyD8FoM4t98NdPTnD/scores/';
-    const response = await fetch(endPoint, {
-      method: 'get',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    });
+  const endPoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/txsLyD8FoM4t98NdPTnD/scores/';
+  const response = await fetch(endPoint, {
+    method: 'get',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  });
 
-    const answer = await response.json();
+  const answer = await response.json();
 
+  return answer;
+};
 
-
-    return answer
-  };
-
-export { setApiScore, getApiScores, getApiScoress  };
+export { setApiScore, getApiScores, getApiScoress };

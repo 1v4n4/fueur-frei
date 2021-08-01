@@ -1,16 +1,16 @@
 /**
  * @jest-environment jsdom
  */
- import GameOver from '../src/Scenes/GameOver';
+import GameOver from '../src/Scenes/GameOver';
 
- require('jest-canvas-mock');
+require('jest-canvas-mock');
 
- jest.mock('../src/Scenes/GameOver');
+jest.mock('../src/Scenes/GameOver');
 
- beforeEach(() => {
-   GameOver.mockClear();
- });
+beforeEach(() => {
+  GameOver.mockClear();
+});
 
- test('GameOver scene test', () => {
-   expect(new GameOver()).toBeInstanceOf(GameOver);
- });
+test('GameOver scene test', () => {
+  expect(new GameOver()).toBeInstanceOf(GameOver);
+});

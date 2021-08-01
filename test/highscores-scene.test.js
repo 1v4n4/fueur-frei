@@ -1,16 +1,16 @@
 /**
  * @jest-environment jsdom
  */
- import HighScores from '../src/Scenes/HighScores';
+import HighScores from '../src/Scenes/HighScores';
 
- require('jest-canvas-mock');
+require('jest-canvas-mock');
 
- jest.mock('../src/Scenes/HighScores');
+jest.mock('../src/Scenes/HighScores');
 
- beforeEach(() => {
-   HighScores.mockClear();
- });
+beforeEach(() => {
+  HighScores.mockClear();
+});
 
- test('HighScores scene test', () => {
-   expect(new HighScores()).toBeInstanceOf(HighScores);
- });
+test('HighScores scene test', () => {
+  expect(new HighScores()).toBeInstanceOf(HighScores);
+});

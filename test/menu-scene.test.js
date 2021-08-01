@@ -1,16 +1,16 @@
 /**
  * @jest-environment jsdom
  */
- import Menu from '../src/Scenes/Menu';
+import Menu from '../src/Scenes/Menu';
 
- require('jest-canvas-mock');
+require('jest-canvas-mock');
 
- jest.mock('../src/Scenes/Menu');
+jest.mock('../src/Scenes/Menu');
 
- beforeEach(() => {
-   Menu.mockClear();
- });
+beforeEach(() => {
+  Menu.mockClear();
+});
 
- test('Menu scene test', () => {
-   expect(new Menu()).toBeInstanceOf(Menu);
- });
+test('Menu scene test', () => {
+  expect(new Menu()).toBeInstanceOf(Menu);
+});

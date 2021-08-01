@@ -1,5 +1,5 @@
 import '@babel/polyfill';
-import {setApiScore, getApiScoress} from '../src/api';
+import { setApiScore, getApiScoress } from '../src/api';
 
 global.fetch = require('jest-fetch-mock');
 
@@ -31,8 +31,8 @@ describe('Get scores from API', () => {
   test('Returns an array of objects if API call is successful', async () => {
     fetch.mockResponseOnce(JSON.stringify([{ user: 'JDoe', score: 100 }]));
     const scores = await getApiScoress();
-    console.log(scores)
-    expect(scores).toEqual([{"score": 100, "user": "JDoe"}]);
+    console.log(scores);
+    expect(scores).toEqual([{ score: 100, user: 'JDoe' }]);
   });
 
   test('Score is not greater than give score', async () => {
@@ -41,4 +41,3 @@ describe('Get scores from API', () => {
     expect(scores[0].score).not.toBeGreaterThan(100);
   });
 });
-

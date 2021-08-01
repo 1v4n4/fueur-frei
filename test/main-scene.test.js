@@ -1,16 +1,16 @@
 /**
  * @jest-environment jsdom
  */
- import Main from '../src/Scenes/Main';
+import Main from '../src/Scenes/Main';
 
- require('jest-canvas-mock');
+require('jest-canvas-mock');
 
- jest.mock('../src/Scenes/Main');
+jest.mock('../src/Scenes/Main');
 
- beforeEach(() => {
-   Main.mockClear();
- });
+beforeEach(() => {
+  Main.mockClear();
+});
 
- test('Main scene test', () => {
-   expect(new Main()).toBeInstanceOf(Main);
- });
+test('Main scene test', () => {
+  expect(new Main()).toBeInstanceOf(Main);
+});

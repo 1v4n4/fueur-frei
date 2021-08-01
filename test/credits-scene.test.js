@@ -1,16 +1,16 @@
 /**
  * @jest-environment jsdom
  */
- import Credits from '../src/Scenes/Credits';
+import Credits from '../src/Scenes/Credits';
 
- require('jest-canvas-mock');
+require('jest-canvas-mock');
 
- jest.mock('../src/Scenes/Credits');
+jest.mock('../src/Scenes/Credits');
 
- beforeEach(() => {
-   Credits.mockClear();
- });
+beforeEach(() => {
+  Credits.mockClear();
+});
 
- test('Credits scene test', () => {
-   expect(new Credits()).toBeInstanceOf(Credits);
- });
+test('Credits scene test', () => {
+  expect(new Credits()).toBeInstanceOf(Credits);
+});
