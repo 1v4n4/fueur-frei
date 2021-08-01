@@ -8,10 +8,10 @@ This retro shooter is a simple platform game, a battle of spaceships with one pl
 
 - Move using arrow keys (Left, Right, Up, and Down).
 - Shoot lasers using Space.
-- The player has 5 lives.
+- The player has five lives.
 - The aim is to destroy as many enemies as possible.
 - There are three kinds of enemies, giving 20, 50, and 100 points on destroying.
-- Player's name can be submitted when the game is over.
+- The player's name can be submitted when the game is over.
 - The best ten results are displayed in a Hall of Fame. Requirements.
 - Music and sounds can be on or off and preference data is kept in local storage.
 
