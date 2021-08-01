@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import Player from '../Entities/Player';
 import ScrollBg from '../Entities/ScrollBg';
+import { getMusic, getSound } from '../localStorage';
 import Ship1 from '../Entities/Ship1';
 import Ship3 from '../Entities/Ship3';
 import Ship2 from '../Entities/Ship2';
@@ -114,7 +115,9 @@ class Main extends Phaser.Scene {
         this.play();
       }, false);
     }
-    this.song.play();
+    const musicOn = getMusic();
+    // eslint-disable-next-line
+    musicOn ? this.song.play() : this.song.stop();
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
@@ -245,9 +248,12 @@ class Main extends Phaser.Scene {
           this.player.x,
           0,
         );
+        const soundOn = getSound();
         if (enemy !== null) {
           enemy.setScale(2);
-          this.sfx.spaceShoot.play();
+          const soundOn = getSound();
+          if (soundOn) {
+          this.sfx.spaceShoot.play();}
           this.enemies.add(enemy);
         }
       },
