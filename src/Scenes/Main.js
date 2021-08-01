@@ -1,11 +1,10 @@
 import Phaser from 'phaser';
 import Player from '../Entities/Player';
 import ScrollBg from '../Entities/ScrollBg';
-import { getMusic, getSound } from '../localStorage';
+import { getMusic, getSound, getName } from '../localStorage';
 import Ship1 from '../Entities/Ship1';
 import Ship3 from '../Entities/Ship3';
 import Ship2 from '../Entities/Ship2';
-
 class Main extends Phaser.Scene {
   constructor() {
     super({ key: 'Main' });
@@ -134,9 +133,20 @@ class Main extends Phaser.Scene {
       'health0', 'health1', 'health2', 'health3', 'health4', 'health5',
     ];
 
+    const name = getName();
+
+    this.sceneName = this.add.text(
+      this.game.config.width * 0.025,
+      this.game.config.height * 0.895,
+      `${name}`, {
+        color: '#E09311',
+        fontSize: '2vw',
+      },
+    );
+
     this.sceneScore = this.add.text(
       this.game.config.width * 0.025,
-      this.game.config.height * 0.925,
+      this.game.config.height * 0.930,
       `Score: ${this.player.getData('score')}`, {
         color: '#E09311',
         fontSize: '2vw',
