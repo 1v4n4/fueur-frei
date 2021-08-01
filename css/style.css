@@ -8,6 +8,7 @@ canvas {
 }
 
 body {
+  position: relative;
   background: black;
   overflow: hidden;
   color: #E09311;
@@ -29,4 +30,28 @@ article {
 }
 #submitBTN:hover {
   background: #860105;
+}
+
+.forAlert {
+  position: absolute;
+  z-index: 5;
+  top: 45vh;
+  right: 40px;
+  height: 6vh;
+  width: 560px;
+
+  color:black;
+  font-size: 4vh;
+  font-weight: bold;
+  text-align: center;
+}
+
+.sound {
+  background: #E09311;
+  border-radius: 10px;
+}
+
+.alrt {
+  background: #860105;
+  border-radius: 10px;
 }
