@@ -70,22 +70,10 @@ export default class Options extends Phaser.Scene {
 
     this.musicText = this.add.text(270, 270, 'Music', { fontSize: 24, color: '#E09311', fontWeight: 'bold' });
 
-    // this.soundButton = this.add.image(200, 350, 'sound');
     this.soundText = this.add.text(270, 360, 'Sound', { fontSize: 24, color: '#E09311', fontWeight: 'bold' });
 
     this.musicButton.setInteractive();
     this.soundButton.setInteractive();
-
-    // .setInteractive();
-    // this.soundOn.on('pointerdown', () => {
-    //   if (this.playing) {
-    //     this.bgMusic.play();
-    //     this.playing = false;
-    //   } else {
-    //     this.bgMusic.stop();
-    //     this.playing = true;
-    //   }
-    // });
 
     this.startBTN = this.add.sprite(
       this.game.config.width * 0.47,
@@ -126,7 +114,7 @@ export default class Options extends Phaser.Scene {
     this.scoresBTN.on('pointerup', () => {
       this.scoresBTN.setTexture('scoresBTN');
       this.song.stop();
-      this.scene.start('SceneLeaderBoard');
+      this.scene.start('HighScores');
     }, this);
 
     this.creditsBTN = this.add.sprite(

@@ -18,8 +18,8 @@ class Menu extends Phaser.Scene {
     this.load.image('playAgainBTN', 'assets/playAgainBTN.png');
     this.load.image('playAgainBTNhover', 'assets/playAgainBTNhover.png');
 
-    this.load.image('scoresBTN', 'assets/scoresBTN.png');
-    this.load.image('scoresBTNhover', 'assets/scoresBTNhover.png');
+    this.load.image('scoresBTN', 'assets/HighScoresBTN.png');
+    this.load.image('scoresBTNhover', 'assets/HighScoresBTNhover.png');
 
     this.load.image('creditsBTN', 'assets/creditsBTN.png');
     this.load.image('creditsBTNhover', 'assets/creditsBTNhover.png');
