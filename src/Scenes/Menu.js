@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
 import { getMusic, getSound } from '../localStorage';
-import { setName } from '../localStorage';
+import { setName, getName } from '../localStorage';
 
 class Menu extends Phaser.Scene {
   constructor() {
@@ -61,12 +61,13 @@ class Menu extends Phaser.Scene {
     el.addEventListener('click', (e) => {
       e.preventDefault();
       if (e.target.name === 'submitBTN') {
-        const inputText = document.getElementById('nameInput').value;
-        if (inputText === '') {
-          inputText = 'Player One';
+        const name = 'Player One';
+        const inputText = document.getElementById('nameInput');
+        if (inputText.value !== '') {
+          name = inputText.value;
         }
-        setName(inputText)
-
+        setName(name);
+        inputText.value = '';
       }
     });
 
@@ -80,6 +81,9 @@ class Menu extends Phaser.Scene {
     this.startBTN.setInteractive();
     this.createButton(this.startBTN, 'startBTN', 'startBTNhover', 'startBTN');
     this.startBTN.on('pointerup', () => {
+      if (!getName()) {
+        setName('Player One')
+      }
       this.startBTN.setTexture('startBTN');
       this.song.stop();
       this.scene.start('Main');
