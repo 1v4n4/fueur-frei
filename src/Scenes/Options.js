@@ -157,10 +157,8 @@ export default class Options extends Phaser.Scene {
       const musicOn = getMusic();
       if (musicOn) {
         this.song.play();
-        console.log('in playMusic', musicOn);
       } else {
         this.song.stop();
-        console.log('in playMusic', musicOn);
       }
     };
 
@@ -170,10 +168,8 @@ export default class Options extends Phaser.Scene {
       const musicOn = getMusic();
       if (musicOn) {
         setMusic(false);
-        console.log(musicOn);
       } else {
         setMusic(true);
-        console.log(musicOn);
       }
 
       playMusic();

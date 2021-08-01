@@ -92,7 +92,6 @@ class HighScores extends Phaser.Scene {
     async function displayScores() {
       const best = await getApiScores();
 
-      console.log(best);
       scoresContainer.innerHTML = '';
       best.forEach((score, index) => {
         scoresContainer.innerHTML += `<p class="p">${index + 1}. PLAYER: ${score.user}, SCORE: ${score.score}</p>`;

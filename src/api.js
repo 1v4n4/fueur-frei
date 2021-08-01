@@ -14,7 +14,6 @@ const createGame = async () => {
     });
 
     const answer = await response.json();
-    console.log(answer);
     return answer;
   } catch (error) {
     console.error(error);
@@ -40,7 +39,6 @@ const setApiScore = async (userName, userScore) => {
     });
 
     const answer = await response.json();
-    console.log(answer);
     return answer;
   } catch (error) {
     console.error(error);
@@ -68,7 +66,6 @@ const getApiScores = async () => {
     if (arr.length > 10) {
       data = arr.slice(0, 10);
     } else { data = arr; }
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error);

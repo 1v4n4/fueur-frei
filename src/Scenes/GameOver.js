@@ -60,7 +60,7 @@ class GameOver extends Phaser.Scene {
     if (typeof this.song.loop === 'boolean') {
       this.song.loop = true;
     } else {
-      this.song.addEventListener('ended', function () {
+      this.song.addEventListener('ended', () => {
         this.currentTime = 0;
         this.play();
       }, false);
@@ -121,14 +121,11 @@ class GameOver extends Phaser.Scene {
     this.add.dom(280, 480, div);
 
     const el = document.getElementById('submitBTN');
-    console.log(el);
     el.addEventListener('click', (e) => {
       e.preventDefault();
-      console.log('in addlistener');
       if (e.target.name === 'submitBTN') {
         const inputText = document.getElementById('nameInput');
         if (inputText.value !== '') {
-          console.log('in div');
           this.userName = inputText.value;
           this.submit = setApiScore(this.userName, this.scores[0]);
           this.submit.then(() => {

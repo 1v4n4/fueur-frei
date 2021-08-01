@@ -130,7 +130,6 @@ class Menu extends Phaser.Scene {
     const musicOn = getMusic();
     // eslint-disable-next-line
     musicOn ? this.song.play() : this.song.stop();
-    console.log(musicOn);
   }
 
   update() {

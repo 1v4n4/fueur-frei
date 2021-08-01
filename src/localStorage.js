@@ -32,7 +32,6 @@ const getMusic = () => {
 const setSound = (value) => {
   const snd = JSON.stringify(value);
   localStorage.setItem('sound', snd);
-  console.log(value);
 };
 
 const getSound = () => {

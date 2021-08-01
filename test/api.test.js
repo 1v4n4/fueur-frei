@@ -31,7 +31,6 @@ describe('Get scores from API', () => {
   test('Returns an array of objects if API call is successful', async () => {
     fetch.mockResponseOnce(JSON.stringify([{ user: 'JDoe', score: 100 }]));
     const scores = await getApiScoress();
-    console.log(scores);
     expect(scores).toEqual([{ score: 100, user: 'JDoe' }]);
   });
 
