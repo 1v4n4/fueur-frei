@@ -48,27 +48,36 @@ class Menu extends Phaser.Scene {
 
 
 
-    this.userName = '';
+
 
     const div = document.createElement('div');
     div.innerHTML = `
     <input type="text" id="nameInput" placeholder="     Enter your name" style="width: 166px; border: 2px solid black; border-radius: 5px; background: #E09311; margin-top: 420px; margin-right: 20px; height: 28px;">
     <button type="submit" name="submitBTN" id="submitBTN" value="SUBMIT" style="width: 166px; font-size: 18px; color: #212529; margin-top: 4px; background: #E09311; border: 1px solid black; border-radius: 5px; height: 32px;" onMouseOver="this.style.background='#860105'" onMouseOut="this.style.background='#E09311'">SUBMIT</button>`;
 
-    this.add.dom(300, 280, div);
+    this.add.dom(300, 300, div);
 
     const el = document.getElementById('submitBTN');
     el.addEventListener('click', (e) => {
       e.preventDefault();
       if (e.target.name === 'submitBTN') {
-        const name = 'Player One';
+        let name = 'Player One';
         const inputText = document.getElementById('nameInput');
         if (inputText.value !== '') {
           name = inputText.value;
         }
         setName(name);
         inputText.value = '';
+        this.sceneName = this.add.text(
+          this.game.config.width * 0.25,
+          this.game.config.height * 0.5,
+          `Player: ${name}`, {
+            color: '#E09311',
+            fontSize: '2vw',
+          },
+        );
       }
+
     });
 
 
