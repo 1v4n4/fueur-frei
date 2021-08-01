@@ -19,7 +19,7 @@ class Menu extends Phaser.Scene {
     this.load.image('playAgainBTNhover', 'assets/playAgainBTNhover.png');
 
     this.load.image('scoresBTN', 'assets/HighScoresBTN.png');
-    this.load.image('scoresBTNhover', 'assets/HighScoresBTNhover.png');
+    this.load.image('scoresBTNhover', 'assets/highScoresBTNhover.png');
 
     this.load.image('creditsBTN', 'assets/creditsBTN.png');
     this.load.image('creditsBTNhover', 'assets/creditsBTNhover.png');
@@ -117,7 +117,6 @@ class Menu extends Phaser.Scene {
 
     this.song = this.sound.add('intro', { volume: 0.1 });
 
-    // to loop the music
     if (typeof this.song.loop === 'boolean') {
       this.song.loop = true;
     } else {

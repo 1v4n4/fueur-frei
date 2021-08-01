@@ -92,7 +92,7 @@ class GameOver extends Phaser.Scene {
     this.btnHighScores.on('pointerup', () => {
       this.btnHighScores.setTexture('scoresBTN');
       this.song.stop();
-      this.scene.start('SceneLeaderBoard');
+      this.scene.start('HighScores');
     }, this);
 
     this.creditsBTN = this.add.sprite(

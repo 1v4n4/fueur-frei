@@ -33,7 +33,7 @@ class Credits extends Phaser.Scene {
     };
 
     this.song = this.sound.add('creditsMusic', { volume: 0.2 });
-    // to loop the music
+
     if (typeof this.song.loop === 'boolean') {
       this.song.loop = true;
     } else {

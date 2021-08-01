@@ -143,7 +143,6 @@ export default class Options extends Phaser.Scene {
 
     this.song = this.sound.add('intro', { volume: 0.1 });
 
-    // to loop the music
     if (typeof this.song.loop === 'boolean') {
       this.song.loop = true;
     } else {

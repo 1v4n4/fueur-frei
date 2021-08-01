@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
 import { getApiScores } from '../api';
-// import { displayScores } from '../helper';
 
 class HighScores extends Phaser.Scene {
   constructor() {
