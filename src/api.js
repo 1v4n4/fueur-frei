@@ -1,3 +1,5 @@
+import { alrts } from "./helper";
+
 // eslint-disable-next-line
 const createGame = async () => {
   try {
@@ -17,7 +19,7 @@ const createGame = async () => {
     return answer;
   } catch (error) {
     console.error(error);
-    alert('Ouch');
+    alrts('Ouch');
   }
 };
 // eslint-disable-next-line
@@ -42,7 +44,7 @@ const setApiScore = async (userName, userScore) => {
     return answer;
   } catch (error) {
     console.error(error);
-    alert('Ouch, something went wrong!');
+    alrts('Ouch, something went wrong!');
   }
 };
 // eslint-disable-next-line
@@ -69,7 +71,7 @@ const getApiScores = async () => {
     return data;
   } catch (error) {
     console.error(error);
-    alert('Ouch, something went wrong!');
+    alrts('Ouch, something went wrong!');
   }
 };
 

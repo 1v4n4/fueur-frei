@@ -1,3 +1,12 @@
+const setName = (name) => {
+  localStorage.setItem('name', JSON.stringify(name));
+}
+
+const getName = () => {
+  const result = JSON.parse(localStorage.getItem('name'));
+  return result;
+}
+
 const getLocalScores = () => {
   const score = localStorage.getItem('scores');
   let result = JSON.parse(score);
@@ -6,14 +15,14 @@ const getLocalScores = () => {
     localStorage.setItem('scores', JSON.stringify(result));
   }
   return result;
-}
+};
 
 const setLocalScores = (score) => {
   const localScore = getLocalScores();
   localScore[0] = score;
   localScore[1] = Math.max(...localScore);
   localStorage.setItem('scores', JSON.stringify(localScore));
-}
+};
 
 const setMusic = (value) => {
   const msc = JSON.stringify(value);
@@ -44,5 +53,5 @@ const getSound = () => {
 };
 
 export {
-  getLocalScores, setLocalScores, getMusic, setMusic, setSound, getSound,
+  getLocalScores, setLocalScores, getMusic, setMusic, setSound, getSound, setName, getName
 };

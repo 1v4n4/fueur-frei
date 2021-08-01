@@ -3,6 +3,7 @@ import ScrollBg from '../Entities/ScrollBg';
 import {
   setMusic, getMusic, getSound, setSound,
 } from '../localStorage';
+import { msgs } from '../helper';
 
 export default class Options extends Phaser.Scene {
   constructor() {
@@ -179,10 +180,10 @@ export default class Options extends Phaser.Scene {
       const soundOn = getSound();
       if (soundOn) {
         setSound(false);
-        alert('Sounds off');
+        msgs('Sound is off');
       } else {
         setSound(true);
-        alert('Sounds on');
+        msgs('Sound is on');
       }
     });
   }

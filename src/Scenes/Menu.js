@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
 import { getMusic, getSound } from '../localStorage';
-import { getApiScores } from '../api';
+import { setName } from '../localStorage';
 
 class Menu extends Phaser.Scene {
   constructor() {
@@ -46,9 +46,34 @@ class Menu extends Phaser.Scene {
       'logo',
     );
 
+
+
+    this.userName = '';
+
+    const div = document.createElement('div');
+    div.innerHTML = `
+    <input type="text" id="nameInput" placeholder="     Enter your name" style="width: 166px; border: 2px solid black; border-radius: 5px; background: #E09311; margin-top: 420px; margin-right: 20px; height: 28px;">
+    <button type="submit" name="submitBTN" id="submitBTN" value="SUBMIT" style="width: 166px; font-size: 18px; color: #212529; margin-top: 4px; background: #E09311; border: 1px solid black; border-radius: 5px; height: 32px;" onMouseOver="this.style.background='#860105'" onMouseOut="this.style.background='#E09311'">SUBMIT</button>`;
+
+    this.add.dom(380, 280, div);
+
+    const el = document.getElementById('submitBTN');
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (e.target.name === 'submitBTN') {
+        const inputText = document.getElementById('nameInput').value;
+        if (inputText === '') {
+          inputText = 'Player One';
+        }
+        setName(inputText)
+
+      }
+    });
+
+
     this.startBTN = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.6,
+      this.game.config.height * 0.75,
       'startBTN',
     );
 
@@ -62,7 +87,7 @@ class Menu extends Phaser.Scene {
 
     this.optionsBTN = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.65,
+      this.game.config.height * 0.80,
       'optionsBTN',
     );
 
@@ -76,7 +101,7 @@ class Menu extends Phaser.Scene {
 
     this.scoresBTN = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.70,
+      this.game.config.height * 0.85,
       'scoresBTN',
     );
 
@@ -90,7 +115,7 @@ class Menu extends Phaser.Scene {
 
     this.creditsBTN = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.75,
+      this.game.config.height * 0.90,
       'creditsBTN',
     );
 
@@ -103,9 +128,6 @@ class Menu extends Phaser.Scene {
     }, this);
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-
-    const x = getApiScores();
-    console.log(x);
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
