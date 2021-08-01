@@ -17,7 +17,7 @@ This retro shooter is a simple platform game, a battle of spaceships with one pl
 
 ## Live Link
 
-[Play game!](https://1v4n4.github.io/fueur-frei/)
+[Play the game!](https://1v4n4.github.io/fueur-frei/)
 
 ## Built With
 
