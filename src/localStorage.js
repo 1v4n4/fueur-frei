@@ -1,4 +1,4 @@
-function getLocalScores() {
+const getLocalScores = () => {
   const score = localStorage.getItem('scores');
   let result = JSON.parse(score);
   if (result === null) {
@@ -8,7 +8,7 @@ function getLocalScores() {
   return result;
 }
 
-function setLocalScores(score) {
+const setLocalScores = (score) => {
   const localScore = getLocalScores();
   localScore[0] = score;
   localScore[1] = Math.max(...localScore);

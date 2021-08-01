@@ -29,8 +29,6 @@ class Main extends Phaser.Scene {
       frameHeight: 27,
     });
 
-    // this.load.image('bomb', 'assets/sprEnemy1.png');
-
     this.load.spritesheet('Ship3', 'assets/ship3.png', {
       frameWidth: 43,
       frameHeight: 29,
@@ -110,7 +108,7 @@ class Main extends Phaser.Scene {
     if (typeof this.song.loop === 'boolean') {
       this.song.loop = true;
     } else {
-      this.song.addEventListener('ended', function () {
+      this.song.addEventListener('ended', () => {
         this.currentTime = 0;
         this.play();
       }, false);

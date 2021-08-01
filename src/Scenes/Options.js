@@ -146,7 +146,7 @@ export default class Options extends Phaser.Scene {
     if (typeof this.song.loop === 'boolean') {
       this.song.loop = true;
     } else {
-      this.song.addEventListener('ended', function () {
+      this.song.addEventListener('ended', () => {
         this.currentTime = 0;
         this.play();
       },
