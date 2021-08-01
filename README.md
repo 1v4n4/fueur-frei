@@ -12,7 +12,7 @@ This retro shooter is a simple platform game, a battle of spaceships with one pl
 - The aim is to destroy as many enemies as possible.
 - There are three kinds of enemies, giving 20, 50, and 100 points on destroying.
 - The player's name can be submitted when the game is over.
-- The best ten results are displayed in a Hall of Fame. Requirements.
+- The best ten results are displayed in a Hall of Fame.
 - Music and sounds can be on or off and preference data is kept in local storage.
 
 ## Live Link
@@ -53,6 +53,28 @@ After starting the development server with `npm start`, you can edit any files i
 ### Testing
 
 The app uses Jest for testing. A command for running the tests that are located in the 'tests' folder is `npm test`.
+
+## Design
+
+This space battle is a platform app with simple graphics.
+
+![Screenshot](./dist/assets/forReadme/myShip.png)
+This player's ship has five lives and it is used to shoot at enemies.
+
+![Screenshot](./dist/assets/forReadme/ship1.png)
+This enemy ship has one life and it is easiest to be killed. It brings 20 points to a player.
+
+![Screenshot](./dist/assets/forReadme/ship2.png)
+This enemy ship has two lives and brings 50 points to a player.
+
+![Screenshot](./dist/assets/forReadme/Ship3.png)
+This enemy ship has three lives and brings 100 points to a player.
+
+![Screenshot](./dist/assets/sprLaserPlayer.png)
+This player's laser is a bit faster than the enemy’s, but there are a lot more enemy ships so that is not a big advantage.
+
+![Screenshot](./dist/assets/sprLaserEnemy0.png)
+This enemy's laser should be avoided.
 
 ## Acknowledgments
 
