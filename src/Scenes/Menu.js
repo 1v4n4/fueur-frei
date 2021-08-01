@@ -1,7 +1,8 @@
 import Phaser from 'phaser';
 import ScrollBg from '../Entities/ScrollBg';
-import { getMusic, getSound } from '../localStorage';
-import { setName, getName } from '../localStorage';
+import {
+  getMusic, getSound, setName, getName,
+} from '../localStorage';
 
 class Menu extends Phaser.Scene {
   constructor() {
@@ -46,10 +47,6 @@ class Menu extends Phaser.Scene {
       'logo',
     );
 
-
-
-
-
     const div = document.createElement('div');
     div.innerHTML = `
     <input type="text" id="nameInput" placeholder="     Enter your name" style="width: 166px; border: 2px solid black; border-radius: 5px; background: #E09311; margin-top: 420px; margin-right: 20px; height: 28px;">
@@ -77,9 +74,7 @@ class Menu extends Phaser.Scene {
           },
         );
       }
-
     });
-
 
     this.startBTN = this.add.sprite(
       this.game.config.width * 0.5,
@@ -91,7 +86,7 @@ class Menu extends Phaser.Scene {
     this.createButton(this.startBTN, 'startBTN', 'startBTNhover', 'startBTN');
     this.startBTN.on('pointerup', () => {
       if (!getName()) {
-        setName('Player One')
+        setName('Player One');
       }
       this.startBTN.setTexture('startBTN');
       this.song.stop();

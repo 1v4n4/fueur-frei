@@ -1,4 +1,4 @@
-import { alrts } from "./helper";
+import { alrts } from './helper';
 
 // eslint-disable-next-line
 const createGame = async () => {
@@ -18,7 +18,6 @@ const createGame = async () => {
     const answer = await response.json();
     return answer;
   } catch (error) {
-    console.error(error);
     alrts('Ouch');
   }
 };
@@ -43,7 +42,6 @@ const setApiScore = async (userName, userScore) => {
     const answer = await response.json();
     return answer;
   } catch (error) {
-    console.error(error);
     alrts('Ouch, something went wrong!');
   }
 };
@@ -70,7 +68,6 @@ const getApiScores = async () => {
     } else { data = arr; }
     return data;
   } catch (error) {
-    console.error(error);
     alrts('Ouch, something went wrong!');
   }
 };

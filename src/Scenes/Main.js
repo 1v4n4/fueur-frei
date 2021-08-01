@@ -5,6 +5,7 @@ import { getMusic, getSound, getName } from '../localStorage';
 import Ship1 from '../Entities/Ship1';
 import Ship3 from '../Entities/Ship3';
 import Ship2 from '../Entities/Ship2';
+
 class Main extends Phaser.Scene {
   constructor() {
     super({ key: 'Main' });

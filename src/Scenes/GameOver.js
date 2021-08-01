@@ -28,16 +28,13 @@ class GameOver extends Phaser.Scene {
 
     this.load.image('menuBTN', 'assets/menuBTN.png');
     this.load.image('menuBTNhover', 'assets/menuBTNhover.png');
-
   }
 
   create() {
-
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver', { volume: 0.1 }),
       btnDown: this.sound.add('sndBtnDown', { volume: 0.1 }),
     };
-
 
     this.gameOverTxt = this.add.text(
       this.game.config.width * 0.04,
@@ -71,8 +68,6 @@ class GameOver extends Phaser.Scene {
       },
     );
 
-
-
     this.btnSubmitScore = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.50,
@@ -82,15 +77,14 @@ class GameOver extends Phaser.Scene {
     this.btnSubmitScore.setInteractive();
     this.createButton(this.btnSubmitScore, 'submitBTN', 'submitBTNhover', 'submitBTN');
     this.btnSubmitScore.on('pointerup', () => {
-      let name = getName();
-      console.log(name)
+      const name = getName();
       this.btnSubmitScore.setTexture('scoresBTN');
       this.submit = setApiScore(name, this.scores[0]);
       this.submit.then(() => {
-      this.song.stop();
-      this.scene.start('HighScores');
+        this.song.stop();
+        this.scene.start('HighScores');
       }, this);
-    })
+    });
 
     this.btnPlayAgain = this.add.sprite(
       this.game.config.width * 0.5,
@@ -149,31 +143,6 @@ class GameOver extends Phaser.Scene {
     }, this);
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-
-    // this.userName = '';
-
-    // const div = document.createElement('div');
-    // div.innerHTML = `
-    // <input type="text" id="nameInput" placeholder="     Enter your name" style="width: 166px; border: 2px solid black; border-radius: 5px; background: #E09311; margin-top: 420px; margin-right: 20px; height: 28px;">
-    // <button type="submit" name="submitBTN" id="submitBTN" value="SUBMIT" style="width: 166px; font-size: 18px; color: #212529; margin-top: 4px; background: #E09311; border: 1px solid black; border-radius: 5px; height: 32px;" onMouseOver="this.style.background='#860105'" onMouseOut="this.style.background='#E09311'">SUBMIT</button>`;
-
-    // this.add.dom(280, 480, div);
-
-    // const el = document.getElementById('submitBTN');
-    // el.addEventListener('click', (e) => {
-    //   e.preventDefault();
-    //   if (e.target.name === 'submitBTN') {
-    //     const inputText = document.getElementById('nameInput');
-    //     if (inputText.value !== '') {
-    //       this.userName = inputText.value;
-    //       this.submit = setApiScore(this.userName, this.scores[0]);
-    //       this.submit.then(() => {
-    //         this.song.stop();
-    //         this.scene.start('HighScores');
-    //       });
-    //     }
-    //   }
-    // });
 
     this.song = this.sound.add('intro', { volume: 0.1 });
     if (typeof this.song.loop === 'boolean') {

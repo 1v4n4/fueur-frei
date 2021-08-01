@@ -1,11 +1,11 @@
 const setName = (name) => {
   localStorage.setItem('name', JSON.stringify(name));
-}
+};
 
 const getName = () => {
   const result = JSON.parse(localStorage.getItem('name'));
   return result;
-}
+};
 
 const getLocalScores = () => {
   const score = localStorage.getItem('scores');
@@ -53,5 +53,5 @@ const getSound = () => {
 };
 
 export {
-  getLocalScores, setLocalScores, getMusic, setMusic, setSound, getSound, setName, getName
+  getLocalScores, setLocalScores, getMusic, setMusic, setSound, getSound, setName, getName,
 };
