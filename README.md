@@ -1,6 +1,6 @@
 # Fueur frei!
 
-This retro shooter is a simple platform game, a battle of spaceships with one player and the kinds of enemies.
+This retro shooter is a simple platform game, a battle of spaceships with one player and three kinds of enemies.
 
 ![Screenshot](./dist/assets/fueurFrei.png)
 
