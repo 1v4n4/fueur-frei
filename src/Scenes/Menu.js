@@ -48,15 +48,12 @@ class Menu extends Phaser.Scene {
     );
 
     let name = 'Player One';
-    console.log(name)
     if (getName()) {
-      console.log(getName())
       name = getName();
     }
-    console.log(name)
 
     this.sceneName = this.add.text(
-      this.game.config.width * 0.25,
+      this.game.config.width * 0.21,
       this.game.config.height * 0.5,
       `Player: ${name}`, {
         color: '#E09311',
@@ -75,17 +72,14 @@ class Menu extends Phaser.Scene {
     el.addEventListener('click', (e) => {
       e.preventDefault();
       if (e.target.name === 'submitBTN') {
-
         const inputText = document.getElementById('nameInput');
         if (inputText.value !== '') {
-
           name = inputText.value;
         }
         setName(name);
         inputText.value = '';
         this.song.stop();
-      this.scene.start('Menu');
-
+        this.scene.start('Menu');
       }
     });
 

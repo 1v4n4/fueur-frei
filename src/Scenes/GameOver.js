@@ -51,7 +51,7 @@ class GameOver extends Phaser.Scene {
     this.gameOverScore = this.add.text(
       this.game.config.width * 0.20,
       this.game.config.height * 0.400,
-      `Score: ${this.scores[0]}`, {
+      `Score: ${this.scores}`, {
         color: '#E09311',
         fontSize: '5vh',
       },
@@ -79,7 +79,7 @@ class GameOver extends Phaser.Scene {
     this.btnSubmitScore.on('pointerup', () => {
       const name = getName();
       this.btnSubmitScore.setTexture('submitBTN');
-      this.submit = setApiScore(name, this.scores[0]);
+      this.submit = setApiScore(name, this.scores);
       this.submit.then(() => {
         this.song.stop();
         this.scene.start('HighScores');

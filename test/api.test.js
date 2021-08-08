@@ -22,4 +22,3 @@ describe('Posting Score to Api ', () => {
     expect(fetch.mock.calls[0][1].body).toEqual(JSON.stringify({ user: 'JDoe', score: 100 }));
   });
 });
-
