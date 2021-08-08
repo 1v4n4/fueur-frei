@@ -11,17 +11,14 @@ const getLocalScores = () => {
   const score = localStorage.getItem('scores');
   let result = JSON.parse(score);
   if (result === null) {
-    result = [0, 0];
+    result = 0;
     localStorage.setItem('scores', JSON.stringify(result));
   }
   return result;
 };
 
 const setLocalScores = (score) => {
-  const localScore = getLocalScores();
-  localScore[0] = score;
-  localScore[1] = Math.max(...localScore);
-  localStorage.setItem('scores', JSON.stringify(localScore));
+  localStorage.setItem('scores', JSON.stringify(score));
 };
 
 const setMusic = (value) => {

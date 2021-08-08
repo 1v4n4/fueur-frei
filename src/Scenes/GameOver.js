@@ -26,8 +26,8 @@ class GameOver extends Phaser.Scene {
     this.load.image('submitBTN', 'assets/submitBTN.png');
     this.load.image('submitBTNhover', 'assets/submitBTNhover.png');
 
-    this.load.image('menuBTN', 'assets/menuBTN.png');
-    this.load.image('menuBTNhover', 'assets/menuBTNhover.png');
+    this.load.image('mBTN', 'assets/mBTN.png');
+    this.load.image('mBTNhover', 'assets/mBTNhover.png');
   }
 
   create() {
@@ -51,7 +51,7 @@ class GameOver extends Phaser.Scene {
     this.gameOverScore = this.add.text(
       this.game.config.width * 0.20,
       this.game.config.height * 0.400,
-      `Score: ${this.scores[0]}`, {
+      `Score: ${this.scores}`, {
         color: '#E09311',
         fontSize: '5vh',
       },
@@ -78,8 +78,8 @@ class GameOver extends Phaser.Scene {
     this.createButton(this.btnSubmitScore, 'submitBTN', 'submitBTNhover', 'submitBTN');
     this.btnSubmitScore.on('pointerup', () => {
       const name = getName();
-      this.btnSubmitScore.setTexture('scoresBTN');
-      this.submit = setApiScore(name, this.scores[0]);
+      this.btnSubmitScore.setTexture('submitBTN');
+      this.submit = setApiScore(name, this.scores);
       this.submit.then(() => {
         this.song.stop();
         this.scene.start('HighScores');
@@ -100,16 +100,16 @@ class GameOver extends Phaser.Scene {
       this.scene.start('Main');
     }, this);
 
-    this.menuBTN = this.add.sprite(
+    this.menuBTNn = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.70,
-      'menuBTN',
+      'mBTN',
     );
 
-    this.menuBTN.setInteractive();
-    this.createButton(this.menuBTN, 'menuBTN', 'menuBTNhover', 'menuBTN');
-    this.menuBTN.on('pointerup', () => {
-      this.menuBTN.setTexture('menuBTN');
+    this.menuBTNn.setInteractive();
+    this.createButton(this.menuBTNn, 'mBTN', 'mBTNhover', 'mBTN');
+    this.menuBTNn.on('pointerup', () => {
+      this.menuBTNn.setTexture('mBTN');
       this.song.stop();
       this.scene.start('Menu');
     }, this);
